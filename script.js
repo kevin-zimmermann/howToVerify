@@ -1,4 +1,4 @@
-window.addEventListener('DOMContentLoaded', () => {
+gwindow.addEventListener('DOMContentLoaded', () => {
 
     const form = document.getElementById('form');
 
