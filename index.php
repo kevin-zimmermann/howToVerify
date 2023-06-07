@@ -1,41 +1,26 @@
 <?php
-$bdd = mysqli_connect("localhost","root","","test");
-
 session_start();
-$query = mysqli_query($bdd ,'SELECT * FROM user');
-$users = mysqli_fetch_all($query,MYSQLI_ASSOC);
-if(isset($_POST['valider'])){
-    $login = $_POST['login'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $password = password_hash($password, PASSWORD_BCRYPT);
-    var_dump(htmlspecialchars($login));
-    var_dump(htmlentities($login));
-//    <script>window.location.href=`https://github.com/`</script>
-    $query = mysqli_query($bdd, "INSERT INTO user (prenom,nom,email) VALUES('$login', '$password','$email');");
+var_dump($_SESSION);
 
-header('location:index.php');
-} ?>
+
+?>
 <!DOCTYPE html>
-<html lang='en'>
+<html lang='fr'>
 <head>
     <meta charset='UTF-8'>
     <title>Title</title>
 </head>
 <body>
-<form method="GET">
+<form method="post" id="form">
+    <label for="login">Login:</label>
     <input type='text' name='login'>
+    <label for="login">MDP:</label>
     <input type='text' name='password'>
+    <label for="login">Email:</label>
     <input type='text' name='email'>
-    <button type='submit' name='valider' value="valider"> Envoyer </button>
+    <input type='button' value="valider" name='valider'>
 </form>
-<?php var_dump($users); ?>
-<?php foreach ($users as $user){ ?>
-    <p><?= $user['prenom'] ?></p>
-    <p><?= $user['nom'] ?></p>
-    <p><?= $user['email'] ?></p>
-
-<?php } ?>
 
 </body>
 </html>
+<script src="script.js"></script>
